@@ -44,7 +44,7 @@ class JSONCharInputReader
     public function processStream($file)
     {
         while (($streamBuffer = fread($file, 1000)) !== false) {
-            foreach ($streamBuffer as $char) {
+            foreach (str_split($streamBuffer) as $char) {
                 $retVal = $this->readChar($char);
                 if($retVal instanceof \stdClass){
                     yield $retVal;
